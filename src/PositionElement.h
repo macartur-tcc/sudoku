@@ -4,7 +4,7 @@
 /**
  * PositionElement Class definition.
  * This class holds a position on the board and an element associated with it.
- * 
+ *
  * @file PositionElement.h
  * @author Bram Bonne
  */
@@ -24,7 +24,7 @@ public:
     int GetX(void) { return m_x; }
     int GetY(void) { return m_y; }
     char GetE(void) { return m_e; }
-    
+
 private:
     int m_x;
     int m_y;

@@ -12,7 +12,6 @@
 #ifndef FILEIOEXCEPTION_H
 #define FILEIOEXCEPTION_H
 
-#include <string>
 using namespace std;
 #include "Exception.h"
 

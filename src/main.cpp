@@ -9,9 +9,6 @@
  * @author Wim Leers
  */
 
-
-#include <iostream>
-#include <string>
 using namespace std;
 #include "Exception.h"
 #include "SudokuApp.h"

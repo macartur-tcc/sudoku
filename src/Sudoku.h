@@ -3,7 +3,7 @@
 
 /**
  * Sudoku class definition.
- * 
+ *
  * @file Sudoku.h
  * @author Bram Bonne
  */
@@ -13,14 +13,7 @@
 #define SUDOKU_H
 
 
-#include "InternalException.h"
 #include "Board.h"
-#include "PositionElement.h"
-#include <list>
-#include <stack>
-#include <time.h>
-#include <stdlib.h>
-using namespace std;
 
 
 class Sudoku {
@@ -32,7 +25,7 @@ public:
     static bool SolveBoard(Board * board);
     static bool BoardIsSolvable(Board board, bool scanSolveOnly = true);
     static int NumLevels(void) { return 5; }
-    
+
 private:
     static bool ScanSolve(Board* board);
     static bool BackTrackSolve(Board* board, int startx = 0, int starty = 0);

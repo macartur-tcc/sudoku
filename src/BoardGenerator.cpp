@@ -10,6 +10,8 @@
 
 
 #include "BoardGenerator.h"
+#include "Sudoku.h"
+#include <QTime>
 
 
 //----------------------------------------------------------------------------
@@ -37,7 +39,7 @@ void BoardGenerator::run() {
     m_generationTime.start();
 
     Sudoku::GenerateBoard(board, level);
-    
+
     // Make sure the generation took at least 0.5 seconds, to make sure the
     // animation doesn't just flash.
     unsigned long actualGenerationTime = (unsigned long) m_generationTime.elapsed();

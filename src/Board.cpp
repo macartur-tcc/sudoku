@@ -1,6 +1,7 @@
 // $Id: Board.cpp 345 2008-06-07 19:28:19Z wimleers $
 
 #include "Board.h"
+#include "FileIO.h"
 
 
 //----------------------------------------------------------------------------
@@ -73,11 +74,11 @@ bool Board::IsValid(void) const {
  */
 bool Board::IsFull(void) const {
     bool full = true;
-    
+
     for (int i = 0; full && i < 9; ++i)
         for (int j = 0; full && j < 9; ++j)
             full = (m_board[i][j] != 0);
-    
+
     return full;
 }
 
@@ -89,11 +90,11 @@ bool Board::IsFull(void) const {
  */
 int Board::NumFilledIn(void) const {
     int num = 0;
-    
+
     for (int i = 0; i < 9; ++i)
         for (int j = 0; j < 9; ++j)
             num += (m_board[i][j] != 0) ? 1 : 0;
-    
+
     return num;
 }
 
@@ -105,11 +106,11 @@ int Board::NumFilledIn(void) const {
  */
 bool* Board::GetPossibleMoves(int x, int y) const {
     bool* output = new bool[10];
-    
+
     output[0] = 0;
     for (int i = 1; i < 10; i++)
         output[i] = IsValidMove(x, y, i);
-    
+
     return output;
 }
 
@@ -123,7 +124,7 @@ bool* Board::GetPossibleMoves(int x, int y) const {
  */
 bool Board::Import(const string & fname) {
     FileIO file;
-    
+
     file.SetFileName(fname);
     file.Open();
     FILEIO_TABLE table = file.GetTable();
@@ -131,7 +132,7 @@ bool Board::Import(const string & fname) {
     if (table.size() == 9) {
         FILEIO_TABLE::iterator tableIt = table.begin();
         FILEIO_ROW::iterator rowIt = tableIt->begin();
-        
+
         for (int i = 0; i < 9; ++i) {
             for (int j = 0; j < 9; ++j) { // Read a row from the table
                 m_board[j][i] = atoi(rowIt->c_str());
@@ -156,7 +157,7 @@ bool Board::Import(const string & fname) {
  */
 bool Board::Export(const string & fname) const {
     FileIO file;
-    
+
     FILEIO_TABLE table;
     for (int i = 0; i < 9; ++i) {
         FILEIO_ROW row;
@@ -168,10 +169,10 @@ bool Board::Export(const string & fname) const {
         }
         table.push_back(row); // Add the row to the table w're going to save
     }
-    
+
     file.SetFileName(fname); // Prepare FileIO object for saving.
     file.SetTable(table);
-    
+
     return file.Save(); // Save returns true if all is successful.
 }
 
@@ -188,7 +189,7 @@ Board & Board::operator=(const Board & other) {
     for (int i = 0; i < 9; ++i)
         for (int j = 0; j < 9; ++j)
             m_board[i][j] = other.Get(i, j);
-    
+
     return *this;
 }
 
@@ -234,10 +235,10 @@ int* Board::operator[](unsigned int i) {
  */
 bool Board::CheckHorizontal(int x, int y, int e) const {
     bool valid = (m_board[x][y] == 0); // Position can't already be filled in
-    
+
     for (int i = 0; valid && i < 9; ++i)
         valid = (m_board[i][y] != e);
-    
+
     return valid;
 }
 
@@ -255,7 +256,7 @@ bool Board::CheckHorizontal(int x, int y, int e) const {
  */
 bool Board::CheckVertical(int x, int y, int e) const {
     bool valid = (m_board[x][y] == 0); // Position can't already be filled in
-    
+
     for (int i = 0; i < 9 && valid; ++i)
         valid = (m_board[x][i] != e);
 
@@ -277,14 +278,14 @@ bool Board::CheckVertical(int x, int y, int e) const {
 bool Board::CheckBlock(int x, int y, int e) const {
     bool valid = (m_board[x][y] == 0);
     int startx, starty; // Position of the first element in a block
-    
+
     startx = x - (x % 3); // Highest product of 3
     starty = y - (y % 3);
-    
+
     for (int i = starty; valid && (i % 3 != 0 || i == starty); ++i) // While not in the next block, and not at end of the board
         for (int j = startx; valid && (j % 3 != 0 || j == startx); ++j)
             valid = (m_board[j][i] != e);
-    
+
     return valid;
 }
 
@@ -297,7 +298,7 @@ bool Board::CheckBlock(int x, int y, int e) const {
 bool Board::IsValidHorizontal(void) const {
     bool elementOccured[10];
     bool valid = true;
-    
+
     for (int i = 0; valid && i < 9; ++i) { // Iterate over the different rows of the board
         for (int j = 0; j < 10; ++j) // Initialize the boolean array
             elementOccured[j] = false;
@@ -308,7 +309,7 @@ bool Board::IsValidHorizontal(void) const {
                 elementOccured[curElem] = true;
     	}
     }
-    
+
     return valid;
 }
 
@@ -321,7 +322,7 @@ bool Board::IsValidHorizontal(void) const {
 bool Board::IsValidVertical(void) const {
     bool elementOccured[10];
     bool valid = true;
-    
+
     for (int i = 0; valid && i < 9; ++i) { // Iterate over the different columns of the board
         for (int j = 0; j < 10; j++) // Initialize the boolean array
             elementOccured[j] = false;
@@ -332,7 +333,7 @@ bool Board::IsValidVertical(void) const {
                 elementOccured[curElem] = true;
         }
     }
-    
+
     return valid;
 }
 
@@ -345,7 +346,7 @@ bool Board::IsValidVertical(void) const {
 bool Board::IsValidBlocks(void) const {
     bool elementOccured[10];
     bool valid = true;
-    
+
     for (int startX = 0; valid && startX < 9; startX += 3) // Iterate over the blocks, horizontally
         for (int startY = 0; valid && startY < 9; startY += 3) { // Iterate over the blocks, vertically
             for (int j = 0; j < 10; ++j) // Initialize the boolean array
@@ -358,7 +359,7 @@ bool Board::IsValidBlocks(void) const {
                         elementOccured[curElem] = true;
                 }
         }
-    
+
     return valid;
 }
 
@@ -376,7 +377,7 @@ QDataStream& operator<<(QDataStream& out, const Board& board) {
     for (int i = 0; i < 9; ++i)
         for (int j = 0; j < 9; ++j)
                 out << board[j][i];
-    
+
     return out;
 }
 
@@ -394,6 +395,6 @@ QDataStream& operator>>(QDataStream& in, Board& board) {
     for (int i = 0; i < 9; ++i)
         for (int j = 0; j < 9; ++j)
                 in >> board[j][i];
-    
+
     return in;
 }

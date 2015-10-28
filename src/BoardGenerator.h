@@ -3,7 +3,7 @@
 
 /**
  * Board Generator class definition.
- * 
+ *
  * @file BoardGenerator.h
  * @author Wim Leers
  */
@@ -14,10 +14,8 @@
 
 
 #include <QThread>
-#include <QTime>
-#include "Sudoku.h"
 
-
+class Board;
 class BoardGenerator : public QThread {
 
     Q_OBJECT

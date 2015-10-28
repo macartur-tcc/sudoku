@@ -3,7 +3,7 @@
 
 /**
  *  Internal Exception header file
- * 
+ *
  * @file InternalException.h
  * @author Bram Bonne
  */

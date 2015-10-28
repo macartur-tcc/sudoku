@@ -10,6 +10,7 @@
 
 
 #include "SudokuApp.h"
+#include <QTranslator>
 
 
 //----------------------------------------------------------------------------
@@ -62,6 +63,6 @@ bool SudokuApp::event(QEvent * event) {
         // QEvent::ApplicationDeactivate is triggered when
         // QEvent::WindowDeactivate should be triggered.
     #endif
-    
+
     return false;
 }

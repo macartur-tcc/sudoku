@@ -13,10 +13,8 @@
 #define FILEIO_H
 
 #include <fstream>
-#include <string>
 #include <queue>
 using namespace std;
-#include "FileIOException.h"
 
 enum Format { FORMAT_CSV };
 
@@ -36,7 +34,7 @@ class FileIO {
         void Open(void);
         bool Save(void);
         void Erase(void);
-        
+
     private:
         Format m_format;
         string m_fileName;

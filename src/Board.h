@@ -13,13 +13,10 @@
 #define BOARD_H
 
 #include <QMetaType>
-#include "FileIO.h"
-#include "InternalException.h"
-#include <qdatastream.h>
 #ifdef Q_OS_LINUX
 #include <cstdlib>
 #endif
-#include <string>
+
 using namespace std;
 
 class Board {
