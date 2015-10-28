@@ -3,12 +3,13 @@
 
 /**
  * Sudoku class definition.
- * 
+ *
  * @file Sudoku.h
  * @author Bram Bonne
  */
 
 
+#pragma once
 #ifndef SUDOKU_H
 #define SUDOKU_H
 
@@ -32,7 +33,7 @@ public:
     static bool SolveBoard(Board * board);
     static bool BoardIsSolvable(Board board, bool scanSolveOnly = true);
     static int NumLevels(void) { return 5; }
-    
+
 private:
     static bool ScanSolve(Board* board);
     static bool BackTrackSolve(Board* board, int startx = 0, int starty = 0);

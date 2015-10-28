@@ -3,12 +3,13 @@
 
 /**
  *  Internal Exception header file
- * 
+ *
  * @file InternalException.h
  * @author Bram Bonne
  */
 
 
+#pragma once
 #ifndef INTERNALEXCEPTION_H
 #define INTERNALEXCEPTION_H
 

@@ -7,12 +7,13 @@
  * The sole reason for this class' existence is that we need the ability to
  * detect the ApplicationDeactivate event. (When this event occurs, we want
  * the game to be paused.)
- * 
+ *
  * @file SudokuApp.h
  * @author Wim Leers
  */
 
 
+#pragma once
 #ifndef SUDOKUAPP_H
 #define SUDOKUAPP_H
 

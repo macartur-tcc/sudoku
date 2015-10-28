@@ -9,6 +9,7 @@
  */
 
 
+#pragma once
 #ifndef FILEIOEXCEPTION_H
 #define FILEIOEXCEPTION_H
 

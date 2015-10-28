@@ -9,6 +9,7 @@
  */
 
 
+#pragma once
 #ifndef FILEIO_H
 #define FILEIO_H
 
@@ -36,7 +37,7 @@ class FileIO {
         void Open(void);
         bool Save(void);
         void Erase(void);
-        
+
     private:
         Format m_format;
         string m_fileName;

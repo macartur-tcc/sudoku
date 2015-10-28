@@ -3,12 +3,13 @@
 
 /**
  * Board Generator class definition.
- * 
+ *
  * @file BoardGenerator.h
  * @author Wim Leers
  */
 
 
+#pragma once
 #ifndef BOARDGENERATOR_H
 #define BOARDGENERATOR_H
 
