@@ -24,6 +24,7 @@ message("Input files...")
 HEADERS += Board.h \
            Exception.h \
            FileIO.h \
+           PositionElement.h \
            FileIOException.h \
            InternalException.h \
            Sudoku.h \
@@ -40,6 +41,7 @@ HEADERS += Board.h \
            Qt/SudokuElement.h \
            Qt/SudokuHUD.h
 SOURCES += Board.cpp \
+	   PositionElement.cpp \
            FileIO.cpp \
            main.cpp \
            Sudoku.cpp \
